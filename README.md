@@ -1,7 +1,7 @@
 # File Organizing 
 > [!IMPORTANT]
 > Only works in linux / mac
-> (Bash Script)
+
 
 This Bash script is designed to organize files in a specified directory based on their types. It categorizes files into different subdirectories such as Images, Documents, Videos, SVGs, Music, WebP images, and Others.
 
