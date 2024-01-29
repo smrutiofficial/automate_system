@@ -25,3 +25,8 @@ read commit_message
 git commit -m "$commit_message"
 git push origin main 
 
+# Get the remote repository URL
+remote_url=$(git remote get-url origin)
+
+# Display the remote repository URL
+echo "Remote repository URL: $remote_url"
