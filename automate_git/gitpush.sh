@@ -28,5 +28,9 @@ git push origin main
 # Get the remote repository URL
 remote_url=$(git remote get-url origin)
 
-# Display the remote repository URL
-echo "Remote repository URL: $remote_url"
+# Convert Git URL to HTTPS for GitHub
+web_url=${remote_url/git@github.com:/https://github.com/}
+web_url=${web_url%.git}
+
+# Display the remote repository web URL
+echo "Remote repository URL: $web_url"
