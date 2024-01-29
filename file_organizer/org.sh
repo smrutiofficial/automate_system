@@ -1,39 +1,23 @@
 #!/bin/bash
 
 # Specify the directory to organize
-target_directory="/home/smruti/Downloads/Other"
+target_directory="$(pwd)"
 
-# Create subdirectories if they don't exist
-mkdir -p "$target_directory/Images"
-mkdir -p "$target_directory/Documents"
-mkdir -p "$target_directory/Videos"
-mkdir -p "$target_directory/Svg"
-mkdir -p "$target_directory/Zip"
-mkdir -p "$target_directory/Music"
-mkdir -p "$target_directory/WebP"
+# Create subdirectories only if there are corresponding files
+find "$target_directory" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -exec mkdir -p "$target_directory/Images" \; -exec mv {} "$target_directory/Images/" \;
 
-# Move images to the "Images" directory
-find "$target_directory" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -exec mv {} "$target_directory/Images/" \;
+find "$target_directory" -type f \( -iname "*.pdf" -o -iname "*.doc" -o -iname "*.docx" -o -iname "*.txt" -o -iname "*.xls" -o -iname "*.xlsx" -o -iname "*.pptx" \) -exec mkdir -p "$target_directory/Documents" \; -exec mv {} "$target_directory/Documents/" \;
 
-# Move documents to the "Documents" directory
-find "$target_directory" -type f \( -iname "*.pdf" -o -iname "*.doc" -o -iname "*.docx" -o -iname "*.txt" -o -iname "*.xls" -o -iname "*.xlsx" -o -iname "*.pptx" \) -exec mv {} "$target_directory/Documents/" \;
+find "$target_directory" -type f \( -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" -o -iname "*.mov" \) -exec mkdir -p "$target_directory/Videos" \; -exec mv {} "$target_directory/Videos/" \;
 
-# Move videos to the "Videos" directory
-find "$target_directory" -type f \( -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" -o -iname "*.mov" \) -exec mv {} "$target_directory/Videos/" \;
+find "$target_directory" -type f \( -iname "*.svg" \) -exec mkdir -p "$target_directory/Svg" \; -exec mv {} "$target_directory/Svg/" \;
 
-#move svgs
-find "$target_directory" -type f \( -iname "*.svg" \) -exec mv {} "$target_directory/Svg/" \;
+find "$target_directory" -type f \( -iname "*.zip" \) -exec mkdir -p "$target_directory/Zip" \; -exec mv {} "$target_directory/Zip/" \;
 
-#move zip
-find "$target_directory" -type f \( -iname "*.zip" \) -exec mv {} "$target_directory/Zip/" \;
+find "$target_directory" -type f \( -iname "*.webp" \) -exec mkdir -p "$target_directory/WebP" \; -exec mv {} "$target_directory/WebP/" \;
 
-# Move WebP images to the "WebP" directory
-find "$target_directory" -type f \( -iname "*.webp" \) -exec mv {} "$target_directory/WebP/" \;
-
-# Move music files to the "Music" directory
-find "$target_directory" -type f \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" \) -exec mv {} "$target_directory/Music/" \;
-
-
+find "$target_directory" -type f \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" \) -exec mkdir -p "$target_directory/Music" \; -exec mv {} "$target_directory/Music/" \;
 
 clear
 echo "Organization complete."
+
